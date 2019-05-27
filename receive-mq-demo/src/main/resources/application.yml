@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        # 没有配置group因此当启动多个消费者的时候，所有的消费者都会消费消息
+        sendOneReceiveAllChanel:
+          destination: sendOneReceiveAll
+        receiveHelloChanel:
+          # 这个属性是配置发送方是那个
+          destination: sayHelloWorld
+          # 创建queues的时候的名字，若不写则为随机数，若编写了则为此处则为【sendHelloWorld.receiveHelloWorld】,这样当我们启动多个消费者的时候消息就只会被消费一次
+          group: receiveHelloWorld
+  rabbitmq:
+    host: 10.10.10.129
+    port: 5672
+    username: linzf
+    password: 123456

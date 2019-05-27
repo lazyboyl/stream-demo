@@ -1,0 +1,16 @@
+spring:
+  rabbitmq:
+    host: 10.10.10.129
+    port: 5672
+    username: linzf
+    password: 123456
+  cloud:
+    stream:
+      bindings:
+        # 这只是单纯的一个命名，只要不重复即可
+        sendOneReceiveAllChangel:
+          # 在MQ中创建一个名为sendOneReceiveAll的changel，发送一次会被所有的接收者消费
+          destination: sendOneReceiveAll
+        sayHelloWorldChanel:
+          # 在MQ中创建一个名为sayHelloWorld的changel,发送一次只会被消费一次
+          destination: sayHelloWorld
